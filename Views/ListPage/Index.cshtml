@@ -1,0 +1,36 @@
+@model PageViewModel<ListPage>
+
+@{
+    Layout = "~/Views/Shared/Layouts/_LeftNavigation.cshtml";
+}
+
+<div class="content">
+    <h1 @Html.EditAttributes(x => x.CurrentPage.PageName)>@Model.CurrentPage.PageName</h1>
+    <p class="lead" @Html.EditAttributes(x => x.CurrentPage.MetaDescription)>@Model.CurrentPage.MetaDescription</p>
+</div>
+BlockList:<br />
+@Html.PropertyFor(m => m.CurrentPage.BlockList)
+XhtmlList:<br />
+@Html.PropertyFor(m => m.CurrentPage.XhtmlList)
+Url List:
+<br />
+@Html.PropertyFor(m => m.CurrentPage.UrlList)
+Json string list:
+<br />
+@Html.PropertyFor(m => m.CurrentPage.JsonStringList)
+String list:
+<br />
+@Html.PropertyFor(m => m.CurrentPage.StringList)
+Json ContentReference list:
+<br />
+@Html.PropertyFor(m => m.CurrentPage.JsonContentLinkList)
+ContentReference List:
+<br />
+@Html.PropertyFor(m => m.CurrentPage.ContentLinkList)
+LinkItem List:
+<br />
+@Html.PropertyFor(m => m.CurrentPage.LinkItemList)
+
+
+
+

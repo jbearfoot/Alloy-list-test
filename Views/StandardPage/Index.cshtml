@@ -1,0 +1,41 @@
+@model PageViewModel<StandardPage>
+
+@{ Layout = "~/Views/Shared/Layouts/_LeftNavigation.cshtml"; }
+
+
+<div class="content">
+    <h1 @Html.EditAttributes(x => x.CurrentPage.PageName)>@Model.CurrentPage.PageName</h1>
+    @Html.PropertyFor(x => x.CurrentPage.ImageLists)
+    <p class="lead" @Html.EditAttributes(x => x.CurrentPage.MetaDescription)>@Model.CurrentPage.MetaDescription</p>
+    <div class="clearfix">
+        @Html.PropertyFor(m => m.CurrentPage.MainBody)
+    </div>
+</div>
+
+@Html.PropertyFor(x => x.CurrentPage.MainContentArea, new { CssClass = "row" })
+Comments:
+<br/>
+@foreach(var comment in Model.CurrentPage.Comments ?? Enumerable.Empty<Comment>())
+{
+    @comment.Message
+    <br /> <i><span>By:</span>
+    @comment.User
+    </i>
+    <br />
+    <br />
+}
+Add New comment:
+@using (@Html.BeginContentForm("Comment"))
+{
+    <div>
+        <label for="user">Name:</label>
+        <br>
+        <input type="text" id="user" name="user" />
+        <br/>
+        <label for="message">Comment:</label>
+        <br>
+        <textarea id="message" name="message"></textarea>
+        <br>
+        <input type="submit" value="Post"/>
+    </div>
+}

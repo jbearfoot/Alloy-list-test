@@ -1,0 +1,10 @@
+@using EPiServer.Core
+
+@model InlineBlock
+
+<div>
+    Block heading:<br />
+   @Html.PropertyFor(m => m.BlockHeading)
+    Block body:<br />
+    @Html.PropertyFor(m => m.BlockBody)
+</div>
